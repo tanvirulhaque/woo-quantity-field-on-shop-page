@@ -9,7 +9,7 @@
  * Text Domain: add-quantity-field-on-shop-page
  * Domain Path: /languages
  * WC requires at least: 3.2
- * WC tested up to: 4.5.2
+ * WC tested up to: 4.6.0
  * License: GPLv2+
 */
 
@@ -80,7 +80,7 @@ if ( ! class_exists( 'Woo_Add_Quantity_Field_on_Shop_Page' ) ) {
             add_action( 'admin_notices', array( $this, 'wc_version_requirement_notice' ) );
 
             add_action( 'woocommerce_after_shop_loop_item', array( $this, 'adding_quantity_field' ) );
-            add_action( 'init', array( $this, 'custom_add_to_cart_quantity_handler' ) );
+            add_action( 'init', array( $this, 'add_to_cart_quantity_handler' ) );
         }
 
         /**
@@ -104,9 +104,15 @@ if ( ! class_exists( 'Woo_Add_Quantity_Field_on_Shop_Page' ) ) {
          * @since 1.0.0
          */
         public function adding_quantity_field() {
-            $product = wc_get_product( get_the_ID() );
+            $product        = wc_get_product( get_the_ID() );
+            $is_wvsp_active = class_exists( 'Woo_Variation_Swatches_Pro' ) ? true : false;
 
-            if ( ! $product->is_sold_individually() && $product->is_purchasable() && $product->is_in_stock() ) {
+            if ( $is_wvsp_active ) {
+                $get_wvsp_options   = get_option( 'woo_variation_swatches' );
+                $is_enable_swatches = $get_wvsp_options['show_on_archive'];
+            }
+
+            if ( ! $product->is_sold_individually() && $product->is_purchasable() && $product->is_in_stock() && $is_wvsp_active = true ) {
                 woocommerce_quantity_input( array(
                     'min_value' => 1,
                     'max_value' => $product->backorders_allowed() ? '' : $product->get_stock_quantity()
@@ -114,7 +120,7 @@ if ( ! class_exists( 'Woo_Add_Quantity_Field_on_Shop_Page' ) ) {
             }
         }
 
-        public function custom_add_to_cart_quantity_handler() {
+        public function add_to_cart_quantity_handler() {
             wc_enqueue_js( '
                 jQuery( ".type-product" ).on( "click", ".quantity input", function() {
                     return false;
