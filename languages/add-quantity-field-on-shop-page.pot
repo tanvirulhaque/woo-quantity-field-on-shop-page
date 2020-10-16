@@ -1,0 +1,67 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WC Add Quantity Field on Shop Page\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-16 11:55+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.4.3; wp-5.5.1"
+
+#: wc-add-quantity-field-on-shop-page.php:182
+msgid ""
+"<strong>WooCommerce - Disable Variable Product Price Range</strong> is an "
+"add-on of "
+msgstr ""
+
+#: wc-add-quantity-field-on-shop-page.php:201
+#, php-format
+msgid ""
+"Currently, you are using older version of WooCommerce. It's recommended to "
+"use latest version of WooCommerce to work with %s."
+msgstr ""
+
+#. Description of the plugin
+msgid "Display quantity field on Shop/Archive page of WooCommerce."
+msgstr ""
+
+#. Author URI of the plugin
+msgid "http://wpxpress.net"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://wordpress.org/plugins/add-quantity-field-on-shop-page/"
+msgstr ""
+
+#: wc-add-quantity-field-on-shop-page.php:160
+msgid ""
+"It's required to use latest version of PHP to use <strong>WooCommerce - "
+"Disable Variable Product Price Range</strong>."
+msgstr ""
+
+#: wc-add-quantity-field-on-shop-page.php:158
+msgid "Please check PHP version requirement."
+msgstr ""
+
+#. Author of the plugin
+msgid "Tanvirul Haque"
+msgstr ""
+
+#. Name of the plugin
+msgid "WC Add Quantity Field on Shop Page"
+msgstr ""
+
+#: wc-add-quantity-field-on-shop-page.php:172
+msgid "WooCommerce"
+msgstr ""
+
+#: wc-add-quantity-field-on-shop-page.php:201
+msgid "WooCommerce - Disable Variable Product Price Range"
+msgstr ""
