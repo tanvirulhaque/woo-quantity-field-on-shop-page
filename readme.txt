@@ -1,4 +1,4 @@
-=== WooCommerce - Add Quantity Field on Shop Page ===
+=== Add Quantity Field on Shop Page ===
 Contributors: tanvirul
 Donate link:
 Tags: quantity, field, shop, woocommerce, variable products, variations

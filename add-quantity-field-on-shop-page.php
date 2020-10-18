@@ -1,8 +1,8 @@
 <?php
 /*
- * Plugin Name: WooCommerce - Add Quantity Field on Shop Page
+ * Plugin Name: Add Quantity Field on Shop Page
  * Plugin URI: https://wordpress.org/plugins/add-quantity-field-on-shop-page/
- * Description:
+ * Description: Display quantity field on Shop / Archive page of WooCommerce. 
  * Author: Tanvirul Haque
  * Version: 1.0.0
  * Author URI: http://wpxpress.net
@@ -33,12 +33,12 @@ if ( ! class_exists( 'Woo_Add_Quantity_Field_on_Shop_Page' ) ) {
         public $version = '1.0.0';
 
         /**
-         * The single instance of the class.
+         * The Single Instance of The Class.
          */
         protected static $instance = null;
 
         /**
-         * Constructor for the class
+         * Constructor for The Class.
          *
          * Sets up all the appropriate hooks and actions
          *
@@ -51,7 +51,7 @@ if ( ! class_exists( 'Woo_Add_Quantity_Field_on_Shop_Page' ) ) {
         }
 
         /**
-         * Initializes the class
+         * Initializes The Class.
          *
          * Checks for an existing instance
          * and if it does't find one, creates it.
@@ -84,7 +84,7 @@ if ( ! class_exists( 'Woo_Add_Quantity_Field_on_Shop_Page' ) ) {
         }
 
         /**
-         * Initialize plugin for localization
+         * Initialize Plugin for Localization
          *
          * @return void
          * @since 1.0.0
@@ -95,24 +95,23 @@ if ( ! class_exists( 'Woo_Add_Quantity_Field_on_Shop_Page' ) ) {
         }
 
         /**
-         * Adding quantity field
+         * Adding Quantity Field
          *
-         * @param $price
-         * @param $product
-         *
-         * @return string
          * @since 1.0.0
          */
         public function adding_quantity_field() {
-            $product        = wc_get_product( get_the_ID() );
+            $product = wc_get_product( get_the_ID() );
             $is_wvsp_active = class_exists( 'Woo_Variation_Swatches_Pro' ) ? true : false;
+            $is_variable_enable = false;
 
             if ( $is_wvsp_active ) {
                 $get_wvsp_options   = get_option( 'woo_variation_swatches' );
                 $is_enable_swatches = $get_wvsp_options['show_on_archive'];
+                $is_enable_catalog_mode = $get_wvsp_options['enable_catalog_mode'];
+                $is_variable_enable = ( 'variable' == $product->get_type() && 1 == $is_enable_swatches && 0 == $is_enable_catalog_mode ) ? true : false ;
             }
 
-            if ( ! $product->is_sold_individually() && $product->is_purchasable() && $product->is_in_stock() && $is_wvsp_active = true ) {
+            if ( $product && ( 'simple' == $product->get_type() || $is_variable_enable ) && ! $product->is_sold_individually() && $product->is_purchasable() && $product->is_in_stock() ) {
                 woocommerce_quantity_input( array(
                     'min_value' => 1,
                     'max_value' => $product->backorders_allowed() ? '' : $product->get_stock_quantity()
@@ -120,11 +119,16 @@ if ( ! class_exists( 'Woo_Add_Quantity_Field_on_Shop_Page' ) ) {
             }
         }
 
+        /**
+         * Adding Add To Cart Quantity Handler
+         *
+         * @since 1.0.0
+         */
         public function add_to_cart_quantity_handler() {
             wc_enqueue_js( '
                 jQuery( ".type-product" ).on( "click", ".quantity input", function() {
                     return false;
-                });
+                } );
                 
                 jQuery( ".type-product" ).on( "change input", ".quantity .qty", function() {
                     var add_to_cart_button = jQuery( this ).parents( ".product" ).find( ".add_to_cart_button" );
@@ -134,17 +138,16 @@ if ( ! class_exists( 'Woo_Add_Quantity_Field_on_Shop_Page' ) ) {
                     
                     // For non-AJAX add-to-cart actions
                     add_to_cart_button.attr( "href", "?add-to-cart=" + add_to_cart_button.attr( "data-product_id" ) + "&quantity=" + jQuery( this ).val() );
-                });
+                } );
                 
                 // Trigger on Enter press
-                jQuery(".woocommerce .products").on("keypress", ".quantity .qty", function(e) {
-                    if ((e.which||e.keyCode) === 13) {
-                        jQuery( this ).parents(".product").find(".add_to_cart_button").trigger("click");
+                jQuery( ".woocommerce .products" ).on( "keypress", ".quantity .qty", function(e) {
+                    if ( ( e.which || e.keyCode ) === 13 ) {
+                        jQuery( this ).parents( ".product" ).find( ".add_to_cart_button" ).trigger( "click" );
                     }
-                });
+                } );
             ' );
         }
-
 
         /**
          * PHP Version
@@ -163,7 +166,7 @@ if ( ! class_exists( 'Woo_Add_Quantity_Field_on_Shop_Page' ) ) {
                 $class   = 'notice notice-error';
                 $text    = esc_html__( 'Please check PHP version requirement.', 'add-quantity-field-on-shop-page' );
                 $link    = esc_url( 'https://docs.woocommerce.com/document/server-requirements/' );
-                $message = wp_kses( __( "It's required to use latest version of PHP to use <strong>WooCommerce - Disable Variable Product Price Range</strong>.", 'add-quantity-field-on-shop-page' ), array( 'strong' => array() ) );
+                $message = wp_kses( __( "It's required to use latest version of PHP to use <strong>Add Quantity Field on Shop Page</strong>.", 'add-quantity-field-on-shop-page' ), array( 'strong' => array() ) );
 
                 printf( '<div class="%1$s"><p>%2$s <a target="_blank" href="%3$s">%4$s</a></p></div>', $class, $message, $link, $text );
             }
@@ -185,7 +188,7 @@ if ( ! class_exists( 'Woo_Add_Quantity_Field_on_Shop_Page' ) ) {
                     'height'    => '500',
                 ), admin_url( 'plugin-install.php' ) ) );
 
-                $message = wp_kses( __( "<strong>WooCommerce - Disable Variable Product Price Range</strong> is an add-on of ", 'add-quantity-field-on-shop-page' ), array( 'strong' => array() ) );
+                $message = wp_kses( __( "<strong>Add Quantity Field on Shop Page</strong> is an add-on of ", 'add-quantity-field-on-shop-page' ), array( 'strong' => array() ) );
 
                 printf( '<div class="%1$s"><p>%2$s <a class="thickbox open-plugin-details-modal" href="%3$s"><strong>%4$s</strong></a></p></div>', $class, $message, $link, $text );
             }
@@ -204,7 +207,7 @@ if ( ! class_exists( 'Woo_Add_Quantity_Field_on_Shop_Page' ) ) {
         public function wc_version_requirement_notice() {
             if ( $this->is_wc_active() && ! $this->is_required_wc_version() ) {
                 $class   = 'notice notice-error';
-                $message = sprintf( esc_html__( "Currently, you are using older version of WooCommerce. It's recommended to use latest version of WooCommerce to work with %s.", 'add-quantity-field-on-shop-page' ), esc_html__( 'WooCommerce - Disable Variable Product Price Range', 'add-quantity-field-on-shop-page' ) );
+                $message = sprintf( esc_html__( "Currently, you are using older version of WooCommerce. It's recommended to use latest version of WooCommerce to work with %s.", 'add-quantity-field-on-shop-page' ), esc_html__( 'Add Quantity Field on Shop Page', 'add-quantity-field-on-shop-page' ) );
                 printf( '<div class="%1$s"><p><strong>%2$s</strong></p></div>', $class, $message );
             }
         }
