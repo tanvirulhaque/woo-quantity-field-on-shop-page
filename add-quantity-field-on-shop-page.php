@@ -1,7 +1,7 @@
 <?php
 /*
- * Plugin Name: Add Quantity Field on Shop Page
- * Plugin URI: https://wordpress.org/plugins/add-quantity-field-on-shop-page/
+ * Plugin Name: WooCommerce - Add Quantity Field on Shop Page
+ * Plugin URI: https://wordpress.org/plugins/add-quantity-field-on-shop-page-for-woocommerce/
  * Description: Display quantity field on Shop / Archive page of WooCommerce. 
  * Author: Tanvirul Haque
  * Version: 1.0.0
@@ -166,7 +166,7 @@ if ( ! class_exists( 'Woo_Add_Quantity_Field_on_Shop_Page' ) ) {
                 $class   = 'notice notice-error';
                 $text    = esc_html__( 'Please check PHP version requirement.', 'add-quantity-field-on-shop-page' );
                 $link    = esc_url( 'https://docs.woocommerce.com/document/server-requirements/' );
-                $message = wp_kses( __( "It's required to use latest version of PHP to use <strong>Add Quantity Field on Shop Page</strong>.", 'add-quantity-field-on-shop-page' ), array( 'strong' => array() ) );
+                $message = wp_kses( __( "It's required to use latest version of PHP to use <strong>WooCommerce - Add Quantity Field on Shop Page</strong>.", 'add-quantity-field-on-shop-page' ), array( 'strong' => array() ) );
 
                 printf( '<div class="%1$s"><p>%2$s <a target="_blank" href="%3$s">%4$s</a></p></div>', $class, $message, $link, $text );
             }
@@ -188,7 +188,7 @@ if ( ! class_exists( 'Woo_Add_Quantity_Field_on_Shop_Page' ) ) {
                     'height'    => '500',
                 ), admin_url( 'plugin-install.php' ) ) );
 
-                $message = wp_kses( __( "<strong>Add Quantity Field on Shop Page</strong> is an add-on of ", 'add-quantity-field-on-shop-page' ), array( 'strong' => array() ) );
+                $message = wp_kses( __( "<strong>WooCommerce - Add Quantity Field on Shop Page</strong> is an add-on of ", 'add-quantity-field-on-shop-page' ), array( 'strong' => array() ) );
 
                 printf( '<div class="%1$s"><p>%2$s <a class="thickbox open-plugin-details-modal" href="%3$s"><strong>%4$s</strong></a></p></div>', $class, $message, $link, $text );
             }
@@ -207,7 +207,7 @@ if ( ! class_exists( 'Woo_Add_Quantity_Field_on_Shop_Page' ) ) {
         public function wc_version_requirement_notice() {
             if ( $this->is_wc_active() && ! $this->is_required_wc_version() ) {
                 $class   = 'notice notice-error';
-                $message = sprintf( esc_html__( "Currently, you are using older version of WooCommerce. It's recommended to use latest version of WooCommerce to work with %s.", 'add-quantity-field-on-shop-page' ), esc_html__( 'Add Quantity Field on Shop Page', 'add-quantity-field-on-shop-page' ) );
+                $message = sprintf( esc_html__( "Currently, you are using older version of WooCommerce. It's recommended to use latest version of WooCommerce to work with %s.", 'add-quantity-field-on-shop-page' ), esc_html__( 'WooCommerce - Add Quantity Field on Shop Page', 'add-quantity-field-on-shop-page' ) );
                 printf( '<div class="%1$s"><p><strong>%2$s</strong></p></div>', $class, $message );
             }
         }
