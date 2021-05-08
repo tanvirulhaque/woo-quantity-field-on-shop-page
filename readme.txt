@@ -1,4 +1,4 @@
-=== Add Quantity Field on Shop Page for WooCommerce ===
+Add Quantity Field on Shop Page for WooCommerce 
 Contributors: tanvirul
 Donate link:
 Tags: quantity, field, shop, woocommerce, variable products, variations
@@ -11,7 +11,7 @@ Stable tag: trunk
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-A lightweight plugin that displays quantity field on the shop page of WooCommerce. 
+A lightweight plugin that displays the quantity field on shop page of WooCommerce.
 
 == Description ==
 Do you want to **add quantity field on shop page of WooCommerce**?

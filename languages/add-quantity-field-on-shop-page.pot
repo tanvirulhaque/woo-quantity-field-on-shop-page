@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Add Quantity Field on Shop Page of WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-18 09:23+0000\n"
+"POT-Creation-Date: 2020-10-20 05:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -21,8 +21,8 @@ msgstr ""
 
 #: add-quantity-field-on-shop-page.php:169
 msgid ""
-"It's required to use latest version of PHP to use <strong>Add Quantity Field "
-"on Shop Page</strong>."
+"It's required to use latest version of PHP to use <strong>WooCommerce - Add "
+"Quantity Field on Shop Page</strong>."
 msgstr ""
 
 #: add-quantity-field-on-shop-page.php:181
@@ -30,7 +30,9 @@ msgid "WooCommerce"
 msgstr ""
 
 #: add-quantity-field-on-shop-page.php:191
-msgid "<strong>Add Quantity Field on Shop Page</strong> is an add-on of "
+msgid ""
+"<strong>WooCommerce - Add Quantity Field on Shop Page</strong> is an add-on "
+"of "
 msgstr ""
 
 #: add-quantity-field-on-shop-page.php:210
@@ -42,7 +44,7 @@ msgstr ""
 
 #. Name of the plugin
 #: add-quantity-field-on-shop-page.php:210
-msgid "Add Quantity Field on Shop Page"
+msgid "WooCommerce - Add Quantity Field on Shop Page"
 msgstr ""
 
 #. Description of the plugin
@@ -50,7 +52,9 @@ msgid "Display quantity field on Shop / Archive page of WooCommerce."
 msgstr ""
 
 #. URI of the plugin
-msgid "https://wordpress.org/plugins/add-quantity-field-on-shop-page/"
+msgid ""
+"https://wordpress.org/plugins/add-quantity-field-on-shop-page-for-"
+"woocommerce/"
 msgstr ""
 
 #. Author of the plugin
