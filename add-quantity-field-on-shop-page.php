@@ -1,15 +1,18 @@
 <?php
 /*
- * Plugin Name: Add Quantity Field on Shop Page
- * Plugin URI: https://wordpress.org/plugins/add-quantity-field-on-shop-page/
- * Description: Display quantity field on Shop / Archive page of WooCommerce. 
+ * Plugin Name: Add Quantity Field on Shop Page for WooCommerce
+ * Plugin URI: https://wordpress.org/plugins/add-quantity-field-on-shop-page-for-woocommerce/
+ * Description: Display quantity field on the Shop / Archive page of WooCommerce. 
  * Author: Tanvirul Haque
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author URI: http://wpxpress.net
  * Text Domain: add-quantity-field-on-shop-page
  * Domain Path: /languages
- * WC requires at least: 3.2
- * WC tested up to: 4.6.0
+ * Requires PHP: 5.6
+ * Requires at least: 4.8
+ * Tested up to: 5.7
+ * WC tested up to: 5.2
+ * WC requires at least: 4.5
  * License: GPLv2+
 */
 
@@ -30,7 +33,7 @@ if ( ! class_exists( 'Woo_Add_Quantity_Field_on_Shop_Page' ) ) {
          * @since 1.0.0
          * @var  string
          */
-        public $version = '1.0.0';
+        public $version = '1.0.1';
 
         /**
          * The Single Instance of The Class.
@@ -54,7 +57,7 @@ if ( ! class_exists( 'Woo_Add_Quantity_Field_on_Shop_Page' ) ) {
          * Initializes The Class.
          *
          * Checks for an existing instance
-         * and if it does't find one, creates it.
+         * and if it doesn't find one, creates it.
          *
          * @return object Class instance
          * @since 1.0.0
